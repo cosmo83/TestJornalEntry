@@ -1,0 +1,44 @@
+{
+  "name": "TestJornalEntry",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/postgres": "^1.10.0",
+    "@sap-cloud-sdk/connectivity": "^3.18.1",
+    "@sap-cloud-sdk/http-client": "^3.18.1",
+    "@sap/cds": "^7",
+    "@sap/cds-dk": "^8.1.2",
+    "@sap/cds-hana": "^2",
+    "axios": "^1.7.4",
+    "cfenv": "^1.2.4",
+    "express": "^4",
+    "fs": "^0.0.1-security",
+    "soap": "^1.1.1",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "sapux": [
+    "app/accounting"
+  ],
+  "cds": {
+    "requires": {
+      "db": "postgres",
+      "JOURNALENTRYCREATEREQUESTCONFI": {
+        "kind": "SOAP",
+        "model": "srv/external/JOURNALENTRYCREATEREQUESTCONFI",
+        "credentials": {
+          "destination": "S4HANA",
+          "path": "sap/bc/srt/scs_ext/sap/journalentrycreaterequestconfi"
+        }
+      }
+    }
+  }
+}

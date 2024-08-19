@@ -1,0 +1,35 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sfin="http://sap.com/xi/SAPSCORE/SFIN">   <soapenv:Header/><soapenv:Body><sfin:JournalEntryBulkCreateRequest><MessageHeader><!--Optional:--><ID></ID><CreationDateTime></CreationDateTime></MessageHeader><!--1 or more repetitions:--><JournalEntryCreateRequest><MessageHeader><!--Optional:--><ID></ID><CreationDateTime></CreationDateTime></MessageHeader><JournalEntry>
+    <OriginalReferenceDocumentType/>
+    <BusinessTransactionType/>
+    <AccountingDocumentType>E1</AccountingDocumentType>
+    <DocumentReferenceID>REF1</DocumentReferenceID>
+    <DocumentHeaderText>SALARY</DocumentHeaderText>
+    <CreatedByUser>CB9980000000</CreatedByUser>
+    <CompanyCode>SSMI</CompanyCode>
+    <TaxDeterminationDate>2024-08-18</TaxDeterminationDate>
+    <DocumentDate>2024-07-31</DocumentDate>
+    <PostingDate>2024-08-18</PostingDate>
+    <CreditorItem>
+        <ReferenceDocumentItem>1</ReferenceDocumentItem>
+        <Creditor>V35010009</Creditor>
+        <AmountInTransactionCurrency currencyCode='INR'>-500</AmountInTransactionCurrency>
+        <DebitCreditCode>H</DebitCreditCode>
+        <DocumentItemText>Text1</DocumentItemText>
+        <BusinessPlace>27MH</BusinessPlace>
+        <TaxCountry>IN</TaxCountry>
+        <DownPaymentTerms>
+            <SpecialGLCode>A</SpecialGLCode>
+            <TaxCode>1A</TaxCode>
+        </DownPaymentTerms>
+    </CreditorItem>
+    <Item>
+        <ReferenceDocumentItem>2</ReferenceDocumentItem>
+        <GLAccount>12010220</GLAccount>
+        <ValueDate>2024-08-17</ValueDate>
+        <AmountInTransactionCurrency currencyCode='INR'>500</AmountInTransactionCurrency>
+        <DebitCreditCode>S</DebitCreditCode>
+        <DocumentItemText>ITEM TEXT2</DocumentItemText>
+        <HouseBank>SBI1</HouseBank>
+        <HouseBankAccount>SBI1</HouseBankAccount>
+    </Item>
+</JournalEntry></JournalEntryCreateRequest></sfin:JournalEntryBulkCreateRequest></soapenv:Body></soapenv:Envelope>
