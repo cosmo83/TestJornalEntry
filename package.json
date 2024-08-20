@@ -32,11 +32,11 @@
     "requires": {
       "db": "postgres",
       "JOURNALENTRYCREATEREQUESTCONFI": {
-        "kind": "SOAP",
-        "model": "srv/external/JOURNALENTRYCREATEREQUESTCONFI",
-        "credentials": {
-          "destination": "S4HANA",
-          "path": "sap/bc/srt/scs_ext/sap/journalentrycreaterequestconfi"
+        "kind": "rest",
+        "[production]": {
+          "credentials": {
+            "destination": "S4HANA"
+          }
         }
       }
     }

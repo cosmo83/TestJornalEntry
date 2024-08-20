@@ -5,7 +5,8 @@ var cfenv = require("cfenv");
 const axios = require('axios');
 var appEnv = cfenv.getAppEnv();
 module.exports = cds.service.impl(async function(){
-// const acctapi = await cds.connect.to('JOURNALENTRYCREATEREQUESTCONFI');
+const acctapi = await cds.connect.to('JOURNALENTRYCREATEREQUESTCONFI');
+
     this.before('CREATE','Acctdoc', async req=> {
         
 var tdata = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sfin="http://sap.com/xi/SAPSCORE/SFIN">   <soapenv:Header/><soapenv:Body><sfin:JournalEntryBulkCreateRequest><MessageHeader><!--Optional:-->';
@@ -51,6 +52,7 @@ var ndata = {
 
 let xmljson = JSON.stringify(ndata);
     var xmlnew = convert.json2xml(xmljson, { compact: true, spaces: 4 });
+	console.log(xmlnew);
     for(let i = 0;i<2;i++){
         let tesdata = xmlnew.replace("/AmountInTransactionCurrency currencyCode='INR'","/AmountInTransactionCurrency");
     xmlnew = tesdata
@@ -79,9 +81,11 @@ let xmljson = JSON.stringify(ndata);
         
         // const pdfResponse = await axios(pdfoptions);
         // console.log(pdfResponse);
-        var einvcnclres = await axios.send(pdfoptions);  
- console.log(einvcnclres)
- req.error({'code': 'NODOCUMENTS',message:'Error'});
+         
+		const resp = await acctapi.tx().send({method:'POST',path:'sap/bc/srt/scs_ext/sap/journalentrycreaterequestconfi',headers:{'Content-Type':'text/xml'},data:xmlsoap});
+		
+ 		console.log(resp)
+ 		req.error({'code': 'NODOCUMENTS',message:'Error'});
  
     });
 
